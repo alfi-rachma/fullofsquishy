@@ -67,6 +67,16 @@ button {
     transform: translate3d(-640px, 0, 0);
 }
 
+.img:after {
+    pointer-events: none;
+}
+
+.img__btn {
+    z-index: 100;
+    position: relative;
+    cursor: pointer;
+}
+
 button {
     display: block;
     margin: 0 auto;
