@@ -131,6 +131,8 @@ document.getElementById("signupBtn").addEventListener("click", function(){
 
     alert("Registrasi berhasil");
 
+    document.querySelector('.cont').classList.remove('s--signup');
+
     document.getElementById("name").value = "";
     document.getElementById("regUsername").value = "";
     document.getElementById("regPassword").value = "";
