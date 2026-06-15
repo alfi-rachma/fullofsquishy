@@ -12,15 +12,15 @@
   <br>
 <br>
     <div class="cont">
-        <div class="form sign-in">
+        <form class="form sign-in" id="loginForm"></form>
             <h2>Welcome</h2>
             <label>
                 <span>User ID</span>
-                <input type="text" />
+                <input type="text" id="text" />
             </label>
             <label>
                 <span>Password</span>
-                <input type="password" />
+                <input type="password" id="password" />
             </label>
             <p class="forgot-pass">Forgot password?</p>
             <button type="button" class="submit" id="signinBtn">Sign In</button>
@@ -44,15 +44,15 @@
                 <h2>Create your Account</h2>
                 <label>
                     <span>Name</span>
-                    <input type="text" />
+                    <input type="text" id="name" />
                 </label>
                 <label>
                     <span>User ID</span>
-                    <input type="text" />
+                    <input type="text" id="regUsername" />
                 </label>
                 <label>
                     <span>Password</span>
-                    <input type="password" />
+                    <input type="password" id="regPassword" />
                 </label>
                 <button type="button" class="submit" id="signupBtn">Sign Up</button>
             </div>
@@ -68,13 +68,49 @@
     <script>
 document.getElementById("signinBtn").addEventListener("click", function () {
 
-    localStorage.setItem("isLoggedIn", "true");
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
 
-    window.location.href = "../../index.html";
+    if(username === "heri" && password === "123"){
+
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("username", username);
+
+        alert("Login berhasil");
+
+        window.location.href = "../../index.html";
+
+    }else{
+
+        alert("Username atau password salah");
+
+    }
 
 });
 </script>
-                      
+
+<script>
+document.getElementById("signupBtn").addEventListener("click", function(){
+
+    let nama = document.querySelector(".sign-up input:nth-of-type(1)").value;
+    let username = document.querySelector(".sign-up input:nth-of-type(2)").value;
+    let password = document.querySelector(".sign-up input:nth-of-type(3)").value;
+
+    let user = {
+        nama: nama,
+        username: username,
+        password: password
+    };
+
+    localStorage.setItem(username, JSON.stringify(user));
+
+    alert("Registrasi berhasil");
+
+});
+</script>
+
+</body>
+    
   </body>
   
 </html>
