@@ -12,11 +12,11 @@
   <br>
 <br>
     <div class="cont">
-        <form class="form sign-in" id="loginForm"></form>
+        <form class="form sign-in" id="loginForm">
             <h2>Welcome</h2>
             <label>
                 <span>User ID</span>
-                <input type="text" id="text" />
+                <input type="text" id="username" />
             </label>
             <label>
                 <span>Password</span>
@@ -24,6 +24,7 @@
             </label>
             <p class="forgot-pass">Forgot password?</p>
             <button type="button" class="submit" id="signinBtn">Sign In</button>
+          </form>
         </div>
         <div class="sub-cont">
             <div class="img">
@@ -71,18 +72,30 @@ document.getElementById("signinBtn").addEventListener("click", function () {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
 
-    if(username === "heri" && password === "123"){
+    let dataUser = localStorage.getItem(username);
 
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("username", username);
+    if(dataUser){
 
-        alert("Login berhasil");
+        let user = JSON.parse(dataUser);
 
-        window.location.href = "../../index.html";
+        if(user.password === password){
+
+            localStorage.setItem("isLoggedIn", "true");
+            localStorage.setItem("username", username);
+
+            alert("Login berhasil");
+
+            window.location.href = "../../index.html";
+
+        }else{
+
+            alert("Password salah");
+
+        }
 
     }else{
 
-        alert("Username atau password salah");
+        alert("User tidak ditemukan");
 
     }
 
@@ -92,25 +105,33 @@ document.getElementById("signinBtn").addEventListener("click", function () {
 <script>
 document.getElementById("signupBtn").addEventListener("click", function(){
 
-    let nama = document.querySelector(".sign-up input:nth-of-type(1)").value;
-    let username = document.querySelector(".sign-up input:nth-of-type(2)").value;
-    let password = document.querySelector(".sign-up input:nth-of-type(3)").value;
+    let nama = document.getElementById("name").value;
+    let username = document.getElementById("regUsername").value;
+    let password = document.getElementById("regPassword").value;
+
+    if(localStorage.getItem(username)){
+
+        alert("Username sudah digunakan");
+        return;
+
+    }
 
     let user = {
-        nama: nama,
-        username: username,
-        password: password
+        nama:nama,
+        username:username,
+        password:password
     };
 
     localStorage.setItem(username, JSON.stringify(user));
 
     alert("Registrasi berhasil");
 
+    document.getElementById("name").value = "";
+    document.getElementById("regUsername").value = "";
+    document.getElementById("regPassword").value = "";
+
 });
 </script>
-
-</body>
     
-  </body>
-  
+</body>
 </html>
