@@ -1054,3 +1054,8 @@ textarea#comment.update_mail::placeholder {
     display: block;
     margin: 20px auto 0;
 }
+
+iframe{
+    display: block;
+    margin: 0 auto;
+}
