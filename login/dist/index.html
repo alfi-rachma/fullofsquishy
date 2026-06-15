@@ -47,10 +47,6 @@
         <form class="form sign-up" id="registerForm">
             <h2>Create your Account</h2>
             <label>
-                <span>Name</span>
-                <input type="text" id="name" />
-            </label>
-            <label>
                 <span>User ID</span>
                 <input type="text" id="regUsername" />
             </label>
@@ -119,13 +115,11 @@ document.getElementById("signinBtn").addEventListener("click", function () {
 <script>
 document.getElementById("signupBtn").addEventListener("click", function(){
 
-    let nama = document.getElementById("name").value;
     let username = document.getElementById("regUsername").value;
     let email = document.getElementById("email").value;
     let password = document.getElementById("regPassword").value;
 
     if(
-    nama === "" ||
     username === "" ||
     email === "" ||
     password === ""
@@ -142,7 +136,6 @@ document.getElementById("signupBtn").addEventListener("click", function(){
     }
 
     let user = {
-    nama:nama,
     username:username,
     email:email,
     password:password
@@ -154,7 +147,6 @@ document.getElementById("signupBtn").addEventListener("click", function(){
 
     document.querySelector('.cont').classList.remove('s--signup');
 
-    document.getElementById("name").value = "";
     document.getElementById("regUsername").value = "";
     document.getElementById("email").value = "";
     document.getElementById("regPassword").value = "";
