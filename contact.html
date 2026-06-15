@@ -146,5 +146,37 @@
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
       <!-- javascript --> 
+
+      <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const loginBtn = document.getElementById("loginBtn");
+    const userInfo = document.getElementById("userInfo");
+
+    if (localStorage.getItem("isLoggedIn") === "true") {
+
+        let username = localStorage.getItem("username");
+
+        userInfo.innerHTML = "Halo, " + username;
+
+        loginBtn.innerHTML =
+            'Logout <span style="color:#222222;"><i class="fa fa-user" aria-hidden="true"></i></span>';
+
+        loginBtn.addEventListener("click", function (e) {
+
+            e.preventDefault();
+
+            localStorage.removeItem("isLoggedIn");
+            localStorage.removeItem("username");
+
+            alert("Berhasil logout!");
+
+            location.reload();
+
+        });
+
+    }
+
+});
    </body>
 </html>
