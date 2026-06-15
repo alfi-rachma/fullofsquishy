@@ -81,6 +81,11 @@ document.getElementById("signinBtn").addEventListener("click", function () {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
 
+    if(username === "" || password === ""){
+    alert("Username dan password harus diisi");
+    return;
+    }
+
     let dataUser = localStorage.getItem(username);
 
     if(dataUser){
@@ -151,6 +156,7 @@ document.getElementById("signupBtn").addEventListener("click", function(){
 
     document.getElementById("name").value = "";
     document.getElementById("regUsername").value = "";
+    document.getElementById("email").value = "";
     document.getElementById("regPassword").value = "";
 
 });
