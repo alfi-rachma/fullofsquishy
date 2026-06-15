@@ -44,7 +44,7 @@
                 <span class="m--in">Sign In</span>
             </div>
         </div>
-        <div class="form sign-up">
+        <form class="form sign-up" id="registerForm">
             <h2>Create your Account</h2>
             <label>
                 <span>Name</span>
@@ -55,13 +55,17 @@
                 <input type="text" id="regUsername" />
             </label>
             <label>
+                <span>Email</span>
+                <input type="email" id="email" />
+            </label>
+            <label>
                 <span>Password</span>
                 <input type="password" id="regPassword" />
             </label>
             <button type="button" class="submit" id="signupBtn">
                 Sign Up
             </button>
-        </div>
+        </form>
     </div>
 </div>
 
@@ -112,7 +116,18 @@ document.getElementById("signupBtn").addEventListener("click", function(){
 
     let nama = document.getElementById("name").value;
     let username = document.getElementById("regUsername").value;
+    let email = document.getElementById("email").value;
     let password = document.getElementById("regPassword").value;
+
+    if(
+    nama === "" ||
+    username === "" ||
+    email === "" ||
+    password === ""
+    ){
+    alert("Semua data harus diisi");
+    return;
+    }
 
     if(localStorage.getItem(username)){
 
@@ -122,11 +137,12 @@ document.getElementById("signupBtn").addEventListener("click", function(){
     }
 
     let user = {
-        nama:nama,
-        username:username,
-        password:password
+    nama:nama,
+    username:username,
+    email:email,
+    password:password
     };
-
+  
     localStorage.setItem(username, JSON.stringify(user));
 
     alert("Registrasi berhasil");
