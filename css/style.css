@@ -1055,7 +1055,8 @@ textarea#comment.update_mail::placeholder {
     margin: 20px auto 0;
 }
 
-iframe{
+.youtube-video{
     display: block;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
 }
